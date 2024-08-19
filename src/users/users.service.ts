@@ -12,6 +12,11 @@ export class UsersService {
     return users;
   }
 
+  async findOneByEmail(email: string): Promise<User> {
+    const user = await this.userModel.findOne({ where: { email } });
+    return user;
+  }
+
   async create(dto: CreateUserDto): Promise<User> {
     const user = await this.userModel.create(dto);
     return user;
